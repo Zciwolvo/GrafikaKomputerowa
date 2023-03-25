@@ -27,10 +27,18 @@
        */
       function drawWorld() {
         // TODO: Draw the content of the scene.
-        rotatingShape(8, 0.3, -1.5, 1);
-        filledTriangle(1, -2.5, 1, -1);
-        rotatingShape(8, 0.3, -0.5, 0.5);
-        Octagon(0, 0);
+        graphics.translate(0, -1);
+        swing("blue");
+
+        graphics.save();
+        graphics.translate(-2, 2.5);
+        graphics.scale(0.8, 0.8);
+        swing("purple");
+        graphics.restore();
+
+        graphics.translate(2, 3);
+        graphics.scale(0.5, 0.5);
+        swing("green");
       }
 
       /**
@@ -44,53 +52,55 @@
 
       // TODO: Define methods for drawing the objects in the scene.
 
-      function rotatingShape(n, length, Xcenter, Ycenter) {
+      function swing(color) {
+        bar();
+        baseTriangle(color);
+      }
+
+      function bar(x, y) {
         graphics.save();
         graphics.fillStyle = "red";
-        graphics.rotate((frameNumber * 0.75 * Math.PI) / 180);
-        shape(n, length, Xcenter, Ycenter);
+        graphics.rotate(-10 * (Math.PI / 180));
+        rotatingShape(8, 1.45, 0, 1);
+        rotatingShape(8, -1.45, 0, -1);
+        graphics.fillRect(-1.5, -0.1, 3, 0.2);
         graphics.restore();
       }
 
-      function rotatingOctagon(x, y) {
+      function baseTriangle(color) {
+        graphics.fillStyle = color;
+        graphics.beginPath();
+        graphics.moveTo(-0.25, -2);
+        graphics.lineTo(0.25, -2);
+        graphics.lineTo(0, 0);
+        graphics.closePath();
+        graphics.fill();
+      }
+
+      function rotatingShape(vertices, x, y, direction) {
         graphics.save();
-        graphics.fillStyle = "red";
-        graphics.rotate((frameNumber * 0.75 * Math.PI) / 180);
-        Octagon(x, y);
+        graphics.translate(x, y);
+        graphics.rotate((direction * (frameNumber * 0.75) * Math.PI) / 180);
+        graphics.beginPath();
+        for (i = 0; i <= vertices; i++) {
+          graphics.lineTo(
+            0.5 * Math.cos((i * 2 * Math.PI) / vertices),
+            0.5 * Math.sin((i * 2 * Math.PI) / vertices)
+          );
+          graphics.lineTo(0, 0);
+          graphics.lineTo(
+            0.5 * Math.cos((i * 2 * Math.PI) / vertices),
+            0.5 * Math.sin((i * 2 * Math.PI) / vertices)
+          );
+        }
+        graphics.closePath();
+        graphics.stroke();
+        graphics.translate(x, y);
+
         graphics.restore();
       }
 
       //------------------- Some methods for drawing basic shapes. ----------------
-
-      function Octagon(x, y) {
-        graphics.fillStyle = "red";
-        graphics.fillRect(x - 0.5, y - 1, 1, 2);
-        graphics.fillRect(x - 1, y - 0.5, 2, 1);
-        graphics.fillPoly(x + 0.5, y + 0.5, x + 1, y + 0.5, x + 0.5, y + 1);
-        graphics.fillPoly(x - 0.5, y + 0.5, x - 1, y + 0.5, x - 0.5, y + 1);
-        graphics.fillPoly(x - 0.5, y - 0.5, x - 1, y - 0.5, x - 0.5, y - 1);
-        graphics.fillPoly(x + 0.5, y - 0.5, x + 1, y - 0.5, x + 0.5, y - 1);
-      }
-
-      function shape(n, length, Xcenter, Ycenter) {
-        graphics.fillStyle = "red";
-        graphics.beginPath();
-        graphics.moveTo(
-          Xcenter + length * Math.cos(0),
-          Ycenter + length * Math.sin(0)
-        );
-
-        for (var i = 1; i <= n; i += 1) {
-          graphics.lineTo(
-            Xcenter + length * Math.cos((i * 2 * Math.PI) / n),
-            Ycenter + length * Math.sin((i * 2 * Math.PI) / n)
-          );
-        }
-
-        graphics.lineWidth = 1;
-        graphics.closePath();
-        graphics.fill();
-      }
 
       function line() {
         // Draws a line from (-0.5,0) to (0.5,0)
@@ -124,14 +134,14 @@
         graphics.fill();
       }
 
-      function filledTriangle(widht, left, height, bottom) {
+      function filledTriangle(g2) {
         // Filled Triangle, width 1, height 1, center of base at (0,0)
-        graphics.beginPath();
-        graphics.moveTo(left, bottom);
-        graphics.lineTo(left + widht, bottom);
-        graphics.lineTo(left + 0.5 * widht, height);
-        graphics.closePath();
-        graphics.fill();
+        g2.beginPath();
+        g2.moveTo(-0.5, 0);
+        g2.lineTo(0.5, 0);
+        g2.lineTo(0, 1);
+        g2.closePath();
+        g2.fill();
       }
 
       // ------------------------------- graphics support functions --------------------------
