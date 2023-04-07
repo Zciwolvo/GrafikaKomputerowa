@@ -58,6 +58,7 @@
 
 - Opracować scenę hierarchiczną zgodnie z obrazem używając zamiast kół wielokąty obracające się (animacja!) według wariantu. Opracowanie powinno być w języku SVG.
 - **Sposób rozwiązania:** \
+  [<Kod zadanie 1. github>](https://github.com/Zciwolvo/GrafikaKomputerowa/blob/main/Lab4/lab4.svg)
   Utworzyłem nowy plik SVG zdefiniowałem rozmiary obszaru, który zostanie wygenerowany.
   Następnie utworzyłem nowy obiekt graficzny o identyfikatorze Octagon gdyż moim wariantem zadania był ośmiokąt utworzyłem go poprzez wypunktowanie następnych wierzchołków naszej figury w taki sposób żeby spójnie składały się w ścieżkę tworzącą ośmiokąt foremny.
   Kolejnym krokiem było stworzenie 8 linii od środką figury do każdego z jej wierzchołków za pomocą wbudowanej w język SVG linii. \
