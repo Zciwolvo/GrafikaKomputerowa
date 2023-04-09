@@ -5,6 +5,8 @@ import java.awt.event.*;
 import com.jogamp.opengl.*;
 import com.jogamp.opengl.awt.*;
 import com.jogamp.opengl.util.gl2.GLUT; 
+import static com.jogamp.opengl.GL.GL_POINTS;
+import static com.jogamp.opengl.GL.GL_TRIANGLE_FAN;
 
 /**
  * CPSC 424, Fall 2015, Lab 4:  Some objects in 3D.  The arrow keys
@@ -69,17 +71,110 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 		// (Objects should lie in the cube with x, y, and z coordinates in the
 		// range -5 to 5.)
 
-		float[] coords = { -0.5F, -0.5F, 0.5F, -0.5F, 0.5F, 0.5F, -0.5F, 0.5F };
-		gl2.glBegin(GL2.GL_TRIANGLES);
-		gl2.glVertex2fv(coords, 0); // Uses coords[0] and coords[1].
-		gl2.glVertex2fv(coords, 2); // Uses coords[2] and coords[3].
-		gl2.glVertex2fv(coords, 4); // Uses coords[4] and coords[5].
-		gl2.glVertex2fv(coords, 6); // Uses coords[6] and coords[7].
-		gl2.glEnd();
-		
+		if(objectNumber==1)
+		{
+			korkociag(gl2, 10);
+		}
+		else if(objectNumber==2)
+		{
+			piramida(gl2, 5);			
+		}
+		else if(objectNumber==3)
+		{
+			kostka(gl2);			
+		}
 		
 		
 
+	}
+
+	private void korkociag(GL2 gl2, int n) {
+		gl2.glColor3f(0,0,1);
+		for (int i =0; i<(15*n); i++)
+		{
+			gl2.glPointSize(1+i/10);
+			gl2.glBegin(GL_POINTS);
+			gl2.glVertex3f(	(float)(2 * Math.cos(i * 2 * Math.PI / 20)),
+							(float)(2 * Math.sin(i * 2 * Math.PI / 20)),0.05f * i);
+			gl2.glEnd();
+		}
+	}
+
+
+	private void trojkat(float j, float k, float n, GL2 gl2)
+	{
+		gl2.glBegin(GL_TRIANGLE_FAN);
+
+		gl2.glVertex3d(	(float)(Math.cos(j * 2 * Math.PI / n)),
+						(float)(Math.sin(j * 2 * Math.PI / n)), 2f);
+		gl2.glVertex3d(	(float)(Math.cos(k * 2 * Math.PI / n)),
+						(float)(Math.sin(k * 2 * Math.PI / n)), 2f);
+		gl2.glVertex3d(0, 0, 0);
+
+		gl2.glEnd();
+	}
+
+	private void piramida(GL2 gl2, int n)
+	{
+		float size = 5;
+		gl2.glScalef(size, size, size);
+		gl2.glRotatef(90, 1, 0, 0);
+		gl2.glTranslatef(0, 0, -1);
+
+		for (int i = 0; i < n; i++)
+		{
+			trojkat(i - 1, i, n, gl2);
+		}
+	}
+
+	private void kostka(GL2 gl2)
+	{
+		double[][] vertices = {
+			{-2f, -2f, -2f }, //
+			{-2f, -2f,  2f },
+			{-2f,  2f,  2f },
+			{-2f,  2f, -2f },
+			{ 2f, -2f, -2f },
+			{ 2f, -2f,  2f },
+			{ 2f,  2f,  2f },
+			{ 2f,  2f, -2f },
+		};
+		
+
+		gl2.glBegin(GL2.GL_QUADS);
+
+		gl2.glVertex3d(vertices[0][0], vertices[0][1],vertices[0][2]);
+		gl2.glVertex3d(vertices[1][0], vertices[1][1],vertices[1][2]);
+		gl2.glVertex3d(vertices[2][0], vertices[2][1],vertices[2][2]);
+		gl2.glVertex3d(vertices[3][0], vertices[3][1],vertices[3][2]);//
+
+		gl2.glVertex3d(vertices[3][0], vertices[3][1],vertices[3][2]);
+		gl2.glVertex3d(vertices[2][0], vertices[2][1],vertices[2][2]);
+		gl2.glVertex3d(vertices[6][0], vertices[6][1],vertices[6][2]);
+		gl2.glVertex3d(vertices[7][0], vertices[7][1],vertices[7][2]);//
+
+		gl2.glVertex3d(vertices[4][0], vertices[4][1],vertices[4][2]);
+		gl2.glVertex3d(vertices[5][0], vertices[5][1],vertices[5][2]);
+		gl2.glVertex3d(vertices[1][0], vertices[1][1],vertices[1][2]);
+		gl2.glVertex3d(vertices[0][0], vertices[0][1],vertices[0][2]);//
+
+		gl2.glVertex3d(vertices[0][0], vertices[0][1],vertices[0][2]);
+		gl2.glVertex3d(vertices[3][0], vertices[3][1],vertices[3][2]);
+		gl2.glVertex3d(vertices[7][0], vertices[7][1],vertices[7][2]);
+		gl2.glVertex3d(vertices[4][0], vertices[4][1],vertices[4][2]);//
+
+		gl2.glVertex3d(vertices[1][0], vertices[1][1],vertices[1][2]);
+		gl2.glVertex3d(vertices[5][0], vertices[5][1],vertices[5][2]);
+		gl2.glVertex3d(vertices[6][0], vertices[6][1],vertices[6][2]);
+		gl2.glVertex3d(vertices[2][0], vertices[2][1],vertices[2][2]);//
+		
+		gl2.glVertex3d(vertices[0][0], vertices[0][1],vertices[0][2]);
+		gl2.glVertex3d(vertices[1][0], vertices[1][1],vertices[1][2]);
+		gl2.glVertex3d(vertices[2][0], vertices[2][1],vertices[2][2]);
+		gl2.glVertex3d(vertices[3][0], vertices[3][1],vertices[3][2]);//
+
+
+		gl2.glEnd();
 	}
 
 		
