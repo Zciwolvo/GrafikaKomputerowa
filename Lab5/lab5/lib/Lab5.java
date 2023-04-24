@@ -77,7 +77,7 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 		}
 		else if(objectNumber==2)
 		{
-			piramida(gl2, 5);			
+			piramida(gl2, 8);			
 		}
 		else if(objectNumber==3)
 		{
@@ -90,7 +90,7 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 
 	private void korkociag(GL2 gl2, int n) {
 		gl2.glColor3f(0,0,1);
-		for (int i =0; i<(15*n); i++)
+		for (int i = 0; i<(15*n); i++)
 		{
 			gl2.glPointSize(1+i/10);
 			gl2.glBegin(GL_POINTS);
@@ -106,9 +106,9 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 		gl2.glBegin(GL_TRIANGLE_FAN);
 
 		gl2.glVertex3d(	(float)(Math.cos(j * 2 * Math.PI / n)),
-						(float)(Math.sin(j * 2 * Math.PI / n)), 2f);
+						(float)(Math.sin(j * 2 * Math.PI / n)), 4f);
 		gl2.glVertex3d(	(float)(Math.cos(k * 2 * Math.PI / n)),
-						(float)(Math.sin(k * 2 * Math.PI / n)), 2f);
+						(float)(Math.sin(k * 2 * Math.PI / n)), 4f);
 		gl2.glVertex3d(0, 0, 0);
 
 		gl2.glEnd();
@@ -116,7 +116,7 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 
 	private void piramida(GL2 gl2, int n)
 	{
-		float size = 5;
+		float size = 3;
 		gl2.glScalef(size, size, size);
 		gl2.glRotatef(90, 1, 0, 0);
 		gl2.glTranslatef(0, 0, -1);
@@ -130,14 +130,14 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 	private void kostka(GL2 gl2)
 	{
 		double[][] vertices = {
-			{-2f, -2f, -2f }, //
-			{-2f, -2f,  2f },
-			{-2f,  2f,  2f },
-			{-2f,  2f, -2f },
-			{ 2f, -2f, -2f },
-			{ 2f, -2f,  2f },
-			{ 2f,  2f,  2f },
-			{ 2f,  2f, -2f },
+			{-4f, -4f, -4f }, 
+			{-4f, -4f,  4f },
+			{-4f,  4f,  4f },
+			{-4f,  4f, -4f },
+			{ 4f, -4f, -4f },
+			{ 4f, -4f,  4f },
+			{ 4f,  4f,  4f },
+			{ 4f,  4f, -4f },
 		};
 		
 
@@ -167,7 +167,7 @@ public class Lab5 extends GLJPanel implements GLEventListener, KeyListener{
 		gl2.glVertex3d(vertices[5][0], vertices[5][1],vertices[5][2]);
 		gl2.glVertex3d(vertices[6][0], vertices[6][1],vertices[6][2]);
 		gl2.glVertex3d(vertices[2][0], vertices[2][1],vertices[2][2]);//
-		
+
 		gl2.glVertex3d(vertices[0][0], vertices[0][1],vertices[0][2]);
 		gl2.glVertex3d(vertices[1][0], vertices[1][1],vertices[1][2]);
 		gl2.glVertex3d(vertices[2][0], vertices[2][1],vertices[2][2]);

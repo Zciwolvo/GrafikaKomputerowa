@@ -33,7 +33,7 @@
 <p align="center"><b>Laboratorium: </b>5</p>
 <p align="center"><b>Data: </b>04.04.2023</p>
 <p align="center"><b>Temat: </b>Geometria trójwymiarowa OpenGL</p>
-<p align="center"><b>Wariant: </b></p>
+<p align="center"><b>Wariant: 8</b></p>
 
 &nbsp;
 
@@ -75,7 +75,7 @@
        <div align="center">
        <img src="z21.png" />
        </div>
-     Podstawa przykładowej piramidy o 5 kątach
+     Podstawa przykładowej piramidy o 8 kątach
        <div align="center">
        <img src="zad22.png" />
        </div>
