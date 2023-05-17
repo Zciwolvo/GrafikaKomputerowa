@@ -1,0 +1,6 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "Lab6/jogamp-fat-2.3.2.jar"
+  ]
+}

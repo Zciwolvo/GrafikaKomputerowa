@@ -30,9 +30,9 @@
 
 &nbsp;
 
-<p align="center"><b>Laboratorium: </b>5</p>
-<p align="center"><b>Data: </b>04.04.2023</p>
-<p align="center"><b>Temat: </b>Geometria trójwymiarowa OpenGL</p>
+<p align="center"><b>Laboratorium: </b>6</p>
+<p align="center"><b>Data: </b>11.04.2023</p>
+<p align="center"><b>Temat: </b>Światło i materiały</p>
 <p align="center"><b>Wariant: 8</b></p>
 
 &nbsp;
