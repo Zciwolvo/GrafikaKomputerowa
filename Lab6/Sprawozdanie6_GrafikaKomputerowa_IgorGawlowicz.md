@@ -33,7 +33,7 @@
 <p align="center"><b>Laboratorium: </b>1</p>
 <p align="center"><b>Data: </b>Data</p>
 <p align="center"><b>Temat: </b>Temat</p>
-<p align="center"><b>Wariant: </b>Wariant</p>
+<p align="center"><b>Wariant: </b>8</p>
 
 &nbsp;
 
