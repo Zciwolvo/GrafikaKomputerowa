@@ -75,7 +75,7 @@
       		{
               float dist=distance( vec2(0.5), gl_PointCoord );
               gl_FragColor=vec4(outcolor, 1.0);//RGBA
-              if ( type> 4.0 )
+              if ( type > 4.0 )
       		 {
                   if ( dist > polygon( type , 0.4, vec2(gl_PointCoord.x - 0.5, gl_PointCoord.y- 0.5)))
       			{
@@ -102,7 +102,7 @@
       var a_coords_buffer; // Buffer to hold the values for a_coords (coordinates for the points)
       var a_color_buffer; //+
       var u_type_loc; //+
-      var nSides = 5; //+
+      var nSides = 4; //+
 
       var POINT_COUNT = 300; // How many points to draw.
       var POINT_SIZE = 32; // Size in pixel of the square drawn for each point.

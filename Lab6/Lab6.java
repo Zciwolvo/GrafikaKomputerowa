@@ -155,12 +155,12 @@ public class Lab6 extends GLJPanel implements GLEventListener  {
 		gl2.glEnable(GL2.GL_LIGHTING);
 		gl2.glEnable(GL2.GL_LIGHT0);
 		// TODO configure better lighting!
-		float[] blue1  = {0.4f, 0.4f, 0.4f, 1};
-		float[] blue2  = {0, 0, 0.8f, 1};
-		float[] blue3  = {0.3f, 0.15f, 0.15f, 1};
-		gl2.glLightfv (gl2.GL_LIGHT1, gl2.GL_DIFFUSE, blue1,0);
-		gl2.glLightfv (gl2.GL_LIGHT1, gl2.GL_SPECULAR, blue2,0);
-		gl2.glLightfv (gl2.GL_LIGHT1, gl2.GL_AMBIENT, blue3,0);
+		float[] c1  = {materials[8][1], materials[8][2], materials[8][3]};
+		float[] c2  = {materials[8][4], materials[8][5], materials[8][6]};
+		float[] c3  = {materials[8][7], materials[8][8], materials[8][9]};
+		gl2.glLightfv (gl2.GL_LIGHT1, gl2.GL_DIFFUSE, c1,0);
+		gl2.glLightfv (gl2.GL_LIGHT1, gl2.GL_SPECULAR, c2,0);
+		gl2.glLightfv (gl2.GL_LIGHT1, gl2.GL_AMBIENT, c3,0);
 		float[] position = {0,1,1,0};
 		gl2.glLightfv (gl2.GL_LIGHT1, GLLightingFunc.GL_POSITION, position, 0);
 		gl2.glEnable(GL2.GL_LIGHT1); 
